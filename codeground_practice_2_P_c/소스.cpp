@@ -46,7 +46,7 @@ int main(int argc, char** argv)
 		{
 			scanf("%d", &v[i]);
 		}
-		sort(v.begin(), v.end());
+		sort(v.begin(), v.end());//이게 왜 필요하지
 		Answer = 0;
 		max = 0;
 		for (unsigned int i = 0; i < num; i++)
