@@ -13,6 +13,7 @@ Please be very careful.
 #include <iostream>
 #include <vector>
 #include <stdio.h>
+#include <algorithm>
 using namespace std;
 
 int Answer;
@@ -38,23 +39,24 @@ int main(int argc, char** argv)
 	for (test_case = 0; test_case < T; test_case++)
 	{
 		scanf("%d", &num);
-		scanf("%d", &max);
+		//scanf("%d", &max);
 		vector<unsigned int> v(num);
-		v[0] = max;
-		for (int i = 1; i < num; i++)
+		//v[0] = max;
+		for (unsigned int i = 0; i < num; i++)
 		{
 			scanf("%d", &v[i]);
-			if (max < v[i])
-			{
-				max = v[i];
-			}
 		}
+		sort(v.begin(), v.end());
 		Answer = 0;
-		for (int i = 0; i < num; i++)
+		max = 0;
+		for (unsigned int i = 0; i < num; i++)
 		{
-			if (max <= (num + v[i]))
-				Answer++;
+			if (max <= (num + v[i] - i))
+				max = v[i] + num - i;
 		}
+		for (unsigned int i = 0; i < num; i++)
+			if (v[i] + num >= max)
+				Answer++;
 		/////////////////////////////////////////////////////////////////////////////////////////////
 		/*
 		Implement your algorithm here.
